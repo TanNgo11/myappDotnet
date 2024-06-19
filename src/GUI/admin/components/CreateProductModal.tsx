@@ -90,8 +90,15 @@ function CreateProductModal({ isShow, onHide, onProductCreate }: CreateProductMo
 
 
         const formData = new FormData();
-        formData.append('product', JSON.stringify(data));
-        formData.append('file', selectedFile);
+        formData.append("name", data.name);
+        formData.append("price", data.price.toString());
+        formData.append("salePrice", data.salePrice.toString());
+        formData.append("description", data.description);
+        formData.append("categoryId", data.categoryId.toString());
+        formData.append("quantity", data.quantity.toString());
+        formData.append("productStatus", data.productStatus);
+     
+        formData.append('image', selectedFile);
 
         setIsLoading(true);
         try {

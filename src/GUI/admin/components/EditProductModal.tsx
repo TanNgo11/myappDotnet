@@ -107,9 +107,16 @@ function EditProductModal({ isShow, onHide, productId, onProductUpdate }: EditPr
     const onSubmit = async (data: UpdateProductRequest) => {
 
         const formData = new FormData();
-        formData.append('product', JSON.stringify(data));
+        formData.append("id", data.id.toString());
+        formData.append("name", data.name);
+        formData.append("price", data.price.toString());
+        formData.append("salePrice", data.salePrice.toString());
+        formData.append("description", data.description);
+        formData.append("categoryId", data.categoryId.toString());
+        formData.append("quantity", data.quantity.toString());
+        formData.append("productStatus", data.productStatus);
         if (selectedFile)
-            formData.append('file', selectedFile);
+            formData.append('image', selectedFile);
 
         console.log("data ne", data);
 
