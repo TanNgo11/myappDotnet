@@ -14,7 +14,7 @@ export interface BackendError {
 
 export const createNewUser = async (user: UserRequest): Promise<ResponseData1<User>> => {
     try {
-        const response = await privateApi.post<ResponseData1<User>>('/api/v1/users', user);
+        const response = await privateApi.post<ResponseData1<User>>('/api/v1/accounts', user);
 
         return response.data;
 
@@ -32,7 +32,7 @@ export const createNewUser = async (user: UserRequest): Promise<ResponseData1<Us
 }
 export const createNewSystemUser = async (formData: FormData): Promise<ResponseData1<User>> => {
     try {
-        const response = await privateApi.post<ResponseData1<User>>('/api/v1/users/admins', formData);
+        const response = await privateApi.post<ResponseData1<User>>('/api/v1/accounts/admins', formData);
         return response.data;
     } catch (error) {
         const axiosError = error as AxiosError<BackendError>;
@@ -50,7 +50,7 @@ export const createNewSystemUser = async (formData: FormData): Promise<ResponseD
 
 export const updateSystemUser = async (formData: FormData, userId: number): Promise<ResponseData1<User>> => {
     try {
-        const response = await privateApi.put<ResponseData1<User>>(`/api/v1/users/admins/${userId}`, formData);
+        const response = await privateApi.put<ResponseData1<User>>(`/api/v1/accounts/admins/${userId}`, formData);
         return response.data;
     } catch (error) {
         const axiosError = error as AxiosError<BackendError>;
@@ -121,7 +121,7 @@ export const fetchUserInfoPage = async (): Promise<ResponseData1<User>> => {
 
 export const updateUser = async (formData: FormData): Promise<ResponseData1<User>> => {
     try {
-        const response = await privateApi.put<ResponseData1<User>>('/api/v1/users', formData);
+        const response = await privateApi.put<ResponseData1<User>>('/api/v1/accounts', formData);
         return response.data;
     } catch (error) {
         const axiosError = error as AxiosError<BackendError>;
@@ -139,7 +139,7 @@ export const updateUser = async (formData: FormData): Promise<ResponseData1<User
 
 export const updateUserProfileById = async (userId: number, formData: FormData): Promise<ResponseData1<User>> => {
     try {
-        const response = await privateApi.put<ResponseData1<User>>('/api/v1/users/' + userId, formData);
+        const response = await privateApi.put<ResponseData1<User>>('/api/v1/accounts/' + userId, formData);
         return response.data;
     } catch (error) {
         const axiosError = error as AxiosError<BackendError>;
@@ -158,7 +158,7 @@ export const updateUserProfileById = async (userId: number, formData: FormData):
 
 export const getAllCustomer = async (): Promise<ResponseData<User>> => {
     try {
-        const response = await privateApi.get<ResponseData<User>>('/api/v1/users/customers');
+        const response = await privateApi.get<ResponseData<User>>('/api/v1/accounts/customers');
         return response.data;
     } catch (error) {
         console.error(error);
@@ -168,7 +168,7 @@ export const getAllCustomer = async (): Promise<ResponseData<User>> => {
 
 export const getAllAdmin = async (): Promise<ResponseData<User>> => {
     try {
-        const response = await privateApi.get<ResponseData<User>>('/api/v1/users/admin');
+        const response = await privateApi.get<ResponseData<User>>('/api/v1/accounts/admin');
         return response.data;
     } catch (error) {
         console.error(error);
@@ -179,7 +179,7 @@ export const getAllAdmin = async (): Promise<ResponseData<User>> => {
 
 export const getUserById = async (userId: number): Promise<ResponseData1<User>> => {
     try {
-        const response = await privateApi.get<ResponseData1<User>>(`/api/v1/users/${userId}`);
+        const response = await privateApi.get<ResponseData1<User>>(`/api/v1/accounts/${userId}`);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -190,7 +190,7 @@ export const getUserById = async (userId: number): Promise<ResponseData1<User>> 
 
 export const getSystemUserById = async (userId: number): Promise<ResponseData1<User>> => {
     try {
-        const response = await privateApi.get<ResponseData1<User>>(`/api/v1/users/admins/${userId}`);
+        const response = await privateApi.get<ResponseData1<User>>(`/api/v1/accounts/admins/${userId}`);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -201,7 +201,7 @@ export const getSystemUserById = async (userId: number): Promise<ResponseData1<U
 
 export const deleteCustomersByIds = async (ids: number[]): Promise<ResponseData1<String>> => {
     try {
-        const response = await privateApi.delete<ResponseData1<String>>(`/api/v1/users/customers`, {
+        const response = await privateApi.delete<ResponseData1<String>>(`/api/v1/accounts/customers`, {
             params: { ids },
             paramsSerializer: params => qs.stringify(params, { arrayFormat: 'repeat' })
         });

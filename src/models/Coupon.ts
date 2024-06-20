@@ -25,7 +25,7 @@ export const CouponSchema = z.object({
     quantity: z.number().refine(value => value != null && value > 0, {
         message: "quantity is required and must be greater than 0",
     }),
-    userIds: z.array(z.number()).refine(value => value != null && value.length > 0, {
+    userIds: z.array(z.string()).refine(value => value != null && value.length > 0, {
         message: "userIds is required and must contain at least one id",
     }),
 });

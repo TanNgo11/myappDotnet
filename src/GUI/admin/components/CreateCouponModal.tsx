@@ -108,8 +108,9 @@ function CreateCouponModal({ isShow, onHide }: CreateCouponModalProps) {
         setSelectedUsers(userIds)
         setValue('userIds', userIds);
     }, []);
-
+    // console.log(errors)
     const onSubmit = async (data: CouponRequest) => {
+
         setIsLoading(true);
         try {
             await createNewCoupon(data);

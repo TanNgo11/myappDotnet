@@ -109,7 +109,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const refreshToken = async () => {
         if (!refreshTokenState) throw new Error('No refresh token available');
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}api/v1/auth/refresh`, { refreshToken: refreshTokenState });
+            const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}api/v1/accounts/refresh`, { refreshToken: refreshTokenState });
             const newAccessToken = response.data.result.accessToken;
             const newRefreshToken = response.data.result.refreshToken;
 
